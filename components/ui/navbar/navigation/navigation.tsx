@@ -1,11 +1,13 @@
 import { Button, DropdownMenu, Flex } from "@radix-ui/themes";
 import { ReactNode, useState } from "react";
 import { ThemeToggle } from "../theme-mode/ThemeToggle";
+import { LanguageSwitcher } from "../language-switcher/LanguageSwitcher";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { CaretDownIcon, HamburgerMenuIcon } from "@radix-ui/react-icons";
+import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./styles.module.css";
+import { useI18n } from "../../../../src/i18n";
 
 interface NavigationButtonProps {
   children: ReactNode;
@@ -34,9 +36,7 @@ const NavigationButton: React.FC<NavigationButtonProps> = ({
           mr="1"
           ml="1"
           variant={variant}
-          className={
-            isActive ? styles.activeButton : ""
-          }
+          className={isActive ? styles.activeButton : ""}
         >
           {children}
         </Button>
@@ -54,9 +54,7 @@ const MobileNavItem: React.FC<NavigationButtonProps> = ({
 
   return (
     <DropdownMenu.Item
-      className={`${styles.dropdownItem} ${
-        isActive ? styles.activeItem : ""
-      }`}
+      className={`${styles.dropdownItem} ${isActive ? styles.activeItem : ""}`}
     >
       <Link href={href} className={styles.mobileNavLink}>
         {children}
@@ -67,6 +65,7 @@ const MobileNavItem: React.FC<NavigationButtonProps> = ({
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useI18n();
 
   return (
     <Flex
@@ -76,10 +75,10 @@ const Navigation = () => {
       className={styles.navigationContainer}
     >
       <div className={styles.desktopNav}>
-        <NavigationButton href="/">Home</NavigationButton>
-        <NavigationButton href="/about-me">About</NavigationButton>
-        <NavigationButton href="/projects">Projects</NavigationButton>
-        <NavigationButton href="/contact">Contact</NavigationButton>
+        <NavigationButton href="/">{t("nav.home")}</NavigationButton>
+        <NavigationButton href="/about-me">{t("nav.about")}</NavigationButton>
+        <NavigationButton href="/projects">{t("nav.projects")}</NavigationButton>
+        <NavigationButton href="/contact">{t("nav.contact")}</NavigationButton>
       </div>
       <div className={styles.mobileNav}>
         <DropdownMenu.Root open={isOpen} onOpenChange={setIsOpen}>
@@ -102,16 +101,17 @@ const Navigation = () => {
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <MobileNavItem href="/">Home</MobileNavItem>
-                  <MobileNavItem href="/about-me">About</MobileNavItem>
-                  <MobileNavItem href="/projects">Projects</MobileNavItem>
-                  <MobileNavItem href="/contact">Contact</MobileNavItem>
+                  <MobileNavItem href="/">{t("nav.home")}</MobileNavItem>
+                  <MobileNavItem href="/about-me">{t("nav.about")}</MobileNavItem>
+                  <MobileNavItem href="/projects">{t("nav.projects")}</MobileNavItem>
+                  <MobileNavItem href="/contact">{t("nav.contact")}</MobileNavItem>
                 </motion.div>
               </DropdownMenu.Content>
             )}
           </AnimatePresence>
         </DropdownMenu.Root>
       </div>
+      <LanguageSwitcher />
       <ThemeToggle />
     </Flex>
   );

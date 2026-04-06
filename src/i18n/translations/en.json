@@ -1,0 +1,104 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "home": {
+    "greeting": "Hello, I'm Juanipis",
+    "subtitle": "Software Engineer",
+    "description": "I am a Systems Engineering graduate from EIA University, passionate about software development and technological innovation. I build AI agents, web applications, and mobile solutions.",
+    "techHeading": "Technologies I work with"
+  },
+  "about": {
+    "title": "Software Engineer",
+    "aboutHeading": "About me",
+    "aboutText": "As a <strong>Systems and Computing Engineering</strong> graduate from <em>EIA University</em>, I'm passionate about <strong>software development</strong> and <strong>technological innovation</strong>. Skilled in web and mobile development using <strong>Python</strong>, <strong>Java</strong>, <strong>Go</strong>, and <strong>Flutter</strong>, I craft dynamic, responsive, and cross-platform solutions.",
+    "experienceHeading": "Experience",
+    "currentLabel": "Current",
+    "techStackHeading": "Tech Stack",
+    "educationHeading": "Education",
+    "educationDegree": "Systems Engineering",
+    "educationSchool": "EIA University",
+    "educationPeriod": "2021 - 2025 (Graduated)",
+    "languagesHeading": "Languages",
+    "spanish": "Spanish",
+    "english": "English",
+    "native": "Native",
+    "softSkillsHeading": "Soft Skills",
+    "experiences": [
+      {
+        "role": "Software Developer (Independent Contractor)",
+        "period": "Dec 2025 - Present",
+        "company": "PROCOL",
+        "companyUrl": "https://www.procol.no/",
+        "concurrent": "current",
+        "summary": "Led technical direction and development of enterprise applications on the Microsoft Power Platform ecosystem.",
+        "highlights": [
+          "Led development of an enterprise resource management app using React, TypeScript, and Microsoft Power Platform.",
+          "Designed role-based access control integrating Microsoft Entra ID and Dataverse.",
+          "Created Azure Pipelines for automated deployment with multi-environment support.",
+          "Led research and development of Autodesk platform integration including 3D model viewing.",
+          "Built Power Automate cloud flows and integrated Dataverse environment variables."
+        ]
+      },
+      {
+        "role": "AI Developer (Freelancer)",
+        "period": "Aug 2025 - Present",
+        "company": "ABACO",
+        "concurrent": "current",
+        "summary": "Designed and built AI agents and RAG systems for child nutrition monitoring and strategic analysis.",
+        "highlights": [
+          "Built intelligent agents using SmolAgents and LangGraph with OpenAI models via Azure.",
+          "Developed RAG systems for document indexing, summarization, and retrieval.",
+          "Built the ANSI Automatic Extractor using AWS Lambda, S3, ECR, and API Gateway."
+        ]
+      },
+      {
+        "role": "Intern",
+        "period": "Jan 2025 - Jul 2025",
+        "company": "ISA",
+        "companyUrl": "https://www.isa.co/",
+        "summary": "Contributed to digitization of field visit processes and development of data processing tools.",
+        "highlights": [
+          "Replaced manual Excel process with a smart form in Survey123.",
+          "Developed a desktop app using Python and Flet for data processing with AI-powered voice transcription.",
+          "Packaged the application as an executable installer for Windows."
+        ]
+      },
+      {
+        "role": "Fullstack Developer",
+        "period": "Jun 2023 - Feb 2024",
+        "company": "Kuenta",
+        "companyUrl": "https://kuenta.co/",
+        "summary": "Full Stack Developer skilled in Go, TypeScript, Java, and Python.",
+        "highlights": [
+          "Led full-stack software development initiatives.",
+          "Designed, implemented, and maintained software features.",
+          "Participated in development sprints with clean coding practices."
+        ]
+      }
+    ],
+    "softSkills": ["Teamwork", "Problem Solving", "Leadership", "Communication", "Adaptability", "Time Management"]
+  },
+  "projects": {
+    "heading": "My Projects",
+    "subtitle": "A collection of things I've built",
+    "viewProject": "View"
+  },
+  "contact": {
+    "heading": "Let's Connect",
+    "subtitle": "I'm always open to discussing projects, ideas, or opportunities."
+  },
+  "meta": {
+    "homeTitle": "Juanipis | Software Engineer",
+    "homeDesc": "Portfolio of Juan Pablo Díaz Correa (Juanipis), a Colombian software engineer specializing in Python, Go, Flutter, and AI development.",
+    "aboutTitle": "Juanipis | About Me",
+    "aboutDesc": "Learn about Juan Pablo Díaz Correa (Juanipis): software engineer from Colombia with experience in AI, web development, and mobile apps.",
+    "projectsTitle": "Juanipis | Projects",
+    "projectsDesc": "Explore the projects of Juan Pablo Díaz Correa (Juanipis): AI agents, web apps, mobile apps, APIs, and more.",
+    "contactTitle": "Juanipis | Contact",
+    "contactDesc": "Get in touch with Juan Pablo Díaz Correa (Juanipis). Connect on GitHub, LinkedIn, or send an email."
+  }
+}

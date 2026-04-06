@@ -25,9 +25,9 @@ const pageVariants = {
 };
 
 const pageTransition = {
-  type: "tween",
-  ease: "anticipate",
-  duration: 0.4,
+  type: "tween" as const,
+  ease: "anticipate" as const,
+  duration: 0.3,
 };
 
 const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {

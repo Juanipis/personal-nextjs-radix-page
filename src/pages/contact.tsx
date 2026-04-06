@@ -1,155 +1,149 @@
-import { Box, Card, Flex, Heading, Strong, Text } from "@radix-ui/themes";
+import { Heading, Text } from "@radix-ui/themes";
 import {
   LinkedInLogo,
-  TwitterXLogo,
   InstagramLogo,
   GitHubLogo,
 } from "../../components/ui/logos/logos";
-import LinkLogo from "../../components/ui/logos/linkLogo/linkLogo";
 import Head from "next/head";
 import { motion } from "framer-motion";
+import { useCssLibPreference } from "../../components/CssLibPreference";
+import { useI18n } from "../i18n";
+import {
+  logoDarkColor,
+  logoLightColor,
+} from "../../components/ui/colors/logoColors";
+import { EnvelopeClosedIcon } from "@radix-ui/react-icons";
 
-const contactHeading = "I'm here";
-const contactText =
-  "Let's talk about your project, or anything else you want to talk, I'm here to help you.";
-const linkdeinUrl = "https://www.linkedin.com/in/juanipis/";
-const xTwitterUrl = "https://twitter.com/juanipis";
-const instagramUrl = "https://www.instagram.com/juanipis/";
-const githubUrl = "https://github.com/Juanipis";
+const socials = [
+  {
+    name: "GitHub",
+    handle: "@Juanipis",
+    url: "https://github.com/Juanipis",
+    Logo: GitHubLogo,
+  },
+  {
+    name: "LinkedIn",
+    handle: "in/juanipis",
+    url: "https://www.linkedin.com/in/juanipis/",
+    Logo: LinkedInLogo,
+  },
+  {
+    name: "Instagram",
+    handle: "@juanipis",
+    url: "https://www.instagram.com/juanipis/",
+    Logo: InstagramLogo,
+  },
+];
+
 const email = "juanipis@gmail.com";
+
 function Contacts() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.2,
-      },
-    },
-  };
+  const { accentColor } = useCssLibPreference();
+  const { t } = useI18n();
+  const isDark = accentColor === "crimson";
+  const logoColor = isDark ? logoDarkColor : logoLightColor;
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const logoVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: "backOut",
-      },
-    },
-    hover: {
-      scale: 1.2,
-      y: -5,
-      transition: {
-        duration: 0.2,
-      },
-    },
-  };
   return (
     <>
       <Head>
-        <title>Juanipis | Contact</title>
-        <meta name="description" content="Juanipis personal website, contact" />
+        <title>{t("meta.contactTitle")}</title>
+        <meta name="description" content={t("meta.contactDesc")} />
+        <meta property="og:title" content={t("meta.contactTitle")} />
+        <meta property="og:description" content={t("meta.contactDesc")} />
+        <meta property="og:url" content="https://juanipis.vercel.app/contact/" />
       </Head>
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-      >
-        <Flex direction="row" justify="center" align="center" grow="1" gap="7">
-          <motion.div variants={itemVariants}>
-            <Card size="5">
-              <Flex gap="3" align="center" wrap="wrap" justify="center">
-                <motion.div variants={itemVariants} style={{ maxWidth: 300 }}>
-                  <Heading size="9">{contactHeading}</Heading>
-                  <Text size="6">{contactText}</Text>
-                </motion.div>
-                
-                <motion.div variants={itemVariants} className="flex flex-col items-center">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8, duration: 0.5 }}
-                  >
-                    <Heading>Social media</Heading>
-                  </motion.div>
-                  
-                  <motion.div
-                    className="flex items-center justify-between gap-2"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1, staggerChildren: 0.1 }}
-                  >
-                    <motion.div variants={logoVariants} whileHover="hover">
-                      <LinkLogo
-                        href={githubUrl}
-                        width="30"
-                        height="30"
-                        logo={GitHubLogo}
-                      />
-                    </motion.div>
-                    <motion.div variants={logoVariants} whileHover="hover">
-                      <LinkLogo
-                        href={linkdeinUrl}
-                        width="30"
-                        height="30"
-                        logo={LinkedInLogo}
-                      />
-                    </motion.div>
-                    <motion.div variants={logoVariants} whileHover="hover">
-                      <LinkLogo
-                        href={xTwitterUrl}
-                        width="23"
-                        height="23"
-                        logo={TwitterXLogo}
-                      />
-                    </motion.div>
-                    <motion.div variants={logoVariants} whileHover="hover">
-                      <LinkLogo
-                        href={instagramUrl}
-                        width="30"
-                        height="30"
-                        logo={InstagramLogo}
-                      />
-                    </motion.div>
-                  </motion.div>
 
-                  <motion.div
-                    className="mt-3 text-center"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.3, duration: 0.5 }}
-                  >
-                    <Text mt="3" align="center">
-                      <Strong>Send me an email at</Strong>
-                    </Text>
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <a href={"mailto:" + email}>{email}</a>
-                    </motion.div>
-                  </motion.div>
-                </motion.div>
-              </Flex>
-            </Card>
+      <section
+        className={`min-h-[85vh] flex items-center justify-center px-4 sm:px-8 ${
+          isDark ? "mesh-gradient-dark" : "mesh-gradient-light"
+        }`}
+      >
+        <div className="max-w-3xl w-full py-16">
+          {/* Header */}
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <Heading
+              size="9"
+              className={isDark ? "gradient-text-crimson" : "gradient-text-blue"}
+              style={{ lineHeight: 1.1, paddingBottom: "0.1em" }}
+            >
+              {t("contact.heading")}
+            </Heading>
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="mt-4"
+            >
+              <Text size="5" className="opacity-60">
+                {t("contact.subtitle")}
+              </Text>
+            </motion.div>
           </motion.div>
-        </Flex>
-      </motion.div>
+
+          {/* Social Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+            {socials.map((social, index) => (
+              <motion.a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 + index * 0.1, duration: 0.5 }}
+                whileHover={{ y: -6, scale: 1.02 }}
+                className="flex flex-col items-center gap-3 p-6 rounded-xl glass-subtle border border-white/10 hover:border-white/25 hover:shadow-lg transition-shadow cursor-pointer"
+                style={{
+                  background: isDark
+                    ? "rgba(255,255,255,0.03)"
+                    : "rgba(255,255,255,0.5)",
+                  textDecoration: "none",
+                  color: "inherit",
+                }}
+              >
+                <social.Logo width="36" height="36" fill={logoColor} />
+                <div className="text-center">
+                  <Text size="3" weight="bold" as="p">
+                    {social.name}
+                  </Text>
+                  <Text size="1" className="opacity-50" as="p">
+                    {social.handle}
+                  </Text>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+
+          {/* Email CTA */}
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
+          >
+            <motion.a
+              href={"mailto:" + email}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-full text-white font-medium shadow-lg hover:shadow-xl transition-shadow"
+              style={{
+                background: isDark
+                  ? "linear-gradient(135deg, #e11d48, #f97316)"
+                  : "linear-gradient(135deg, #3b82f6, #06b6d4)",
+                textDecoration: "none",
+              }}
+            >
+              <EnvelopeClosedIcon width="16" height="16" />
+              {email}
+            </motion.a>
+          </motion.div>
+        </div>
+      </section>
     </>
   );
 }

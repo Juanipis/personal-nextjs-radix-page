@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useLayoutEffect } from "@radix-ui/react-use-layout-effect";
+import { useLayoutEffect } from "react";
 import { DEFAULT_CSS_LIB, SUPPORTED_CSS_LIBS } from "./constants";
 import type { CssLib } from "./constants";
 

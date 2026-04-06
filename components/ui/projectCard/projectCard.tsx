@@ -1,8 +1,10 @@
-import { Card, Flex, Inset, Strong, Text } from "@radix-ui/themes";
+import { Text } from "@radix-ui/themes";
 import { useCssLibPreference } from "../../CssLibPreference";
+import { useI18n } from "../../../src/i18n";
 import Image from "next/image";
 import { logoDarkColor, logoLightColor } from "../colors/logoColors";
 import { motion } from "framer-motion";
+import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 
 interface ProjectCardProps {
   title: string;
@@ -20,83 +22,76 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   url,
 }) => {
   const { accentColor } = useCssLibPreference();
+  const { t } = useI18n();
+  const isDark = accentColor === "crimson";
 
   return (
     <motion.div
-      whileHover={{ 
-        scale: 1.05, 
-        y: -10,
-        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5 }}
+      whileHover={{ y: -6 }}
+      className="group rounded-xl overflow-hidden border border-white/10 hover:border-white/25 shadow-sm hover:shadow-xl transition-all duration-300"
+      style={{
+        background: isDark
+          ? "rgba(255,255,255,0.03)"
+          : "rgba(255,255,255,0.6)",
       }}
-      transition={{ duration: 0.3 }}
-      data-aos="fade-up"
-      data-aos-duration="600"
     >
-      <Card size="2" style={{ width: 320, maxHeight: 350 }}>
-        <Inset clip="padding-box" side="top" pb="current">
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.3 }}
-            style={{ overflow: 'hidden' }}
-          >
-            <Image
-              src={image}
-              alt={title}
-              width="320"
-              height="180"
-              style={{
-                display: "block",
-                objectFit: "cover",
-                width: "100%",
-                height: 140,
-                backgroundColor: "var(--gray-5)",
-              }}
-            />
-          </motion.div>
-        </Inset>
-      <Flex direction="column" justify="between" style={{ height: 150 }}>
-        <Flex direction="column">
-          <Text size="3" weight="medium" mt="3">
+      {/* Image */}
+      <div className="overflow-hidden aspect-video relative">
+        <Image
+          src={image}
+          alt={title}
+          width={600}
+          height={340}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          style={{ backgroundColor: "var(--gray-5)" }}
+        />
+      </div>
+
+      {/* Content */}
+      <div className="p-4 flex flex-col gap-3">
+        <div>
+          <Text size="3" weight="bold" as="p">
             {title}
           </Text>
-          <Text size="2" mt="2" mr="3">
+          <Text size="2" className="opacity-60 mt-1" as="p">
             {description}
           </Text>
-        </Flex>
+        </div>
 
-        <div>
-          <Flex wrap="wrap" gap="2" justify="center" mt="3" mb="1">
+        {/* Tech + Link */}
+        <div className="flex items-center justify-between mt-auto">
+          <div className="flex gap-2 flex-wrap">
             {technologies.map((Logo, index) => (
               <motion.div
                 key={index}
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 transition={{ duration: 0.2 }}
+                className="opacity-50 group-hover:opacity-80 transition-opacity"
               >
                 <Logo
-                  height="20"
-                  width="20"
-                  fill={
-                    accentColor === "crimson" ? logoDarkColor : logoLightColor
-                  }
+                  height="18"
+                  width="18"
+                  fill={isDark ? logoDarkColor : logoLightColor}
                 />
               </motion.div>
             ))}
-          </Flex>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
+          </div>
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-sm font-medium opacity-60 hover:opacity-100 transition-opacity"
+            style={{ textDecoration: "none", color: "inherit" }}
           >
-            <Text size="2" ml="3">
-              <Strong>
-                <a href={url} target="_blank" rel="noopener noreferrer">
-                  View project
-                </a>
-              </Strong>
-            </Text>
-          </motion.div>
+            {t("projects.viewProject")}
+            <ArrowTopRightIcon width="14" height="14" />
+          </a>
         </div>
-      </Flex>
-    </Card>
+      </div>
     </motion.div>
   );
 };
