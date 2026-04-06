@@ -217,6 +217,81 @@ function AboutMe() {
                       <ExperienceLine>
                         <ExperienceItem>
                           <Flex direction="column">
+                            <Heading size="3">Software Developer (Independent Contractor)</Heading>
+                            <Text>Dec 2025 - Present</Text>
+                            <Text weight="medium">
+                              <a href="https://www.procol.no/">
+                                PROCOL
+                              </a>
+                            </Text>
+                            <Text>
+                              Led the technical direction and development of enterprise
+                              applications on the Microsoft Power Platform ecosystem.
+                            </Text>
+                            <ul className=" ml-5" style={{ listStyleType: "disc" }}>
+                              <li>
+                                Led the technical direction and development from inception
+                                of an enterprise extra work and resource management
+                                application using React, TypeScript, and Microsoft Power
+                                Platform (Code Apps). Made key architectural decisions
+                                including clean architecture adoption, technology stack
+                                selection, and development standards.
+                              </li>
+                              <li>
+                                Designed role-based access control integrating Microsoft
+                                Entra ID security groups, Office 365 Groups, and Dataverse
+                                business units. Played a key role in the solution migration
+                                to the client&apos;s Power Platform environment.
+                              </li>
+                              <li>
+                                Created Azure Pipelines for automated deployment and PR
+                                validation with multi-environment support using Power
+                                Platform CLI.
+                              </li>
+                              <li>
+                                Led the research, technical understanding, and development
+                                of a web application for Autodesk platform integration
+                                including 3D model viewing.
+                              </li>
+                              <li>
+                                Built Power Automate cloud flows and integrated Dataverse
+                                environment variables for cross-environment configuration.
+                              </li>
+                            </ul>
+                          </Flex>
+                        </ExperienceItem>
+                        <ExperienceItem>
+                          <Flex direction="column">
+                            <Heading size="3">AI Developer (Freelancer)</Heading>
+                            <Text>Aug 2025 - Present</Text>
+                            <Text weight="medium">
+                              ABACO - Asociación de Bancos de Alimentos de Colombia
+                            </Text>
+                            <Text>
+                              Designed and built AI agents and RAG systems for child
+                              nutrition monitoring and strategic analysis.
+                            </Text>
+                            <ul className=" ml-5" style={{ listStyleType: "disc" }}>
+                              <li>
+                                Built specialized intelligent agents including the Policy
+                                Insights Agent and Observatory Agent using SmolAgents and
+                                LangGraph with OpenAI models via Azure.
+                              </li>
+                              <li>
+                                Developed the Research Docs Summarizer and RAG Execute Job
+                                systems for document indexing, automated summarization, and
+                                retrieval.
+                              </li>
+                              <li>
+                                Built the ANSI Automatic Extractor for automated data
+                                collection. Implemented cloud architectures using AWS
+                                Lambda, S3, ECR, and API Gateway.
+                              </li>
+                            </ul>
+                          </Flex>
+                        </ExperienceItem>
+                        <ExperienceItem>
+                          <Flex direction="column">
                             <Heading size="3">Intern</Heading>
                             <Text>Jan 2025 - Jul 2025</Text>
                             <Text weight="medium">
@@ -348,7 +423,7 @@ function AboutMe() {
                         <Flex direction="column" gap="1">
                           <Heading size="3">Systems Engineering</Heading>
                           <Text>EIA University</Text>
-                          <Text>2021 - Now</Text>
+                          <Text>2021 - 2025 (Graduated)</Text>
                         </Flex>
                       </Box>
                     </motion.section>
